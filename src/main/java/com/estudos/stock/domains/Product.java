@@ -10,6 +10,8 @@ import com.estudos.stock.shared.enums.ProductMeasurementEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,12 +28,14 @@ import lombok.Setter;
 public class Product {
     @Id @GeneratedValue(strategy= GenerationType.UUID)
     private String id;
+    @Enumerated(EnumType.STRING)
     @Column(name="product_category")
     private ProductCategoryEnum productCategory;
     @Column
     private String name;
     @Column
     private int volume;
+    @Enumerated(EnumType.STRING)
     @Column(name="product_measurement")
     private ProductMeasurementEnum productMeasurement;
     @Column
