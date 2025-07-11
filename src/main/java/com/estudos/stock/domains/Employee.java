@@ -4,6 +4,8 @@ import com.estudos.stock.shared.enums.EmployeeCategoryEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +28,7 @@ public class Employee {
     private String cpf;
     @Column(name= "credential_id")
     private String credentialId;
+    @Enumerated(EnumType.STRING)
     @Column(name= "employee_category")
     private EmployeeCategoryEnum employeeCategory;
 
