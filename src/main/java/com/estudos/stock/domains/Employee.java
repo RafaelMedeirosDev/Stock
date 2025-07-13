@@ -9,6 +9,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,13 +28,14 @@ public class Employee {
     private String name;
     @Column
     private String cpf;
-    @Column(name= "credential_id")
-    private String credentialId;
+    @ManyToOne
+    @JoinColumn(name = "credential_id", insertable = false, updatable = false)
+    private Credential credentialId;
     @Enumerated(EnumType.STRING)
     @Column(name= "employee_category")
     private EmployeeCategoryEnum employeeCategory;
 
-    public Employee(String name, String cpf, String credentialId, EmployeeCategoryEnum employeeCategory){
+    public Employee(String name, String cpf, Credential credentialId, EmployeeCategoryEnum employeeCategory){
         this.name = name;
         this.cpf = cpf;
         this.credentialId = credentialId;
