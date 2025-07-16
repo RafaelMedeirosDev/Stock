@@ -4,11 +4,12 @@ import com.estudos.stock.domains.Product;
 import com.estudos.stock.shared.enums.MovementTypeEnum;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class CreateMovementDto {
-    @NotBlank(message= "movement type is not optional")
+    @NotNull(message= "movement type is not optional")
     public MovementTypeEnum movementType;
     @NotBlank(message= "product id is not optional")
     public Product productId;

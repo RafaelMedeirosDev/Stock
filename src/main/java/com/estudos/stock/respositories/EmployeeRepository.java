@@ -19,8 +19,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
                 e.name,
                 e.cpf,
                 c.email,
-                e.employee_category,
-                e.credential_id 
+                e.credential_id, 
+                e.role
                 FROM employee e 
                 JOIN credential c ON c.id = e.credential_id
                 """,

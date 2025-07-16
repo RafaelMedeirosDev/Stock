@@ -17,6 +17,6 @@ public class CreateEmployeeService {
 
     public Employee execute (CreateEmployeeDto data){
         Credential credential = this.createCredentialService.execute(data.email, data.password);
-        return this.employeeRepository.save(new Employee(data.name, data.cpf, credential, data.employeeCategory));
+        return this.employeeRepository.save(new Employee(data.name, data.cpf, credential, data.role));
     }
 }
