@@ -1,6 +1,6 @@
  package com.estudos.stock.domains;
 
-import com.estudos.stock.shared.enums.EmployeeCategoryEnum;
+import com.estudos.stock.shared.enums.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,16 +29,16 @@ public class Employee {
     @Column
     private String cpf;
     @ManyToOne
-    @JoinColumn(name = "credential_id", insertable = false, updatable = false)
-    private Credential credentialId;
+    @JoinColumn(name = "credential_id")
+    private Credential credential;
     @Enumerated(EnumType.STRING)
-    @Column(name= "employee_category")
-    private EmployeeCategoryEnum employeeCategory;
+    @Column
+    private Role role;
 
-    public Employee(String name, String cpf, Credential credentialId, EmployeeCategoryEnum employeeCategory){
+    public Employee(String name, String cpf, Credential credential, Role role){
         this.name = name;
         this.cpf = cpf;
-        this.credentialId = credentialId;
-        this.employeeCategory = employeeCategory;
+        this.credential = credential;
+        this.role = role;
     }
 }

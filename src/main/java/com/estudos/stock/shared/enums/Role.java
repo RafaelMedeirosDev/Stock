@@ -1,6 +1,6 @@
 package com.estudos.stock.shared.enums;
 
-public enum  EmployeeCategoryEnum {
+public enum  Role {
     MANAGER,
     ATTENDANT,
 }
