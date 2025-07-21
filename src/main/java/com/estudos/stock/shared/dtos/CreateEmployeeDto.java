@@ -1,5 +1,7 @@
 package com.estudos.stock.shared.dtos;
 
+
+
 import com.estudos.stock.shared.enums.Role;
 
 import jakarta.validation.constraints.Email;
