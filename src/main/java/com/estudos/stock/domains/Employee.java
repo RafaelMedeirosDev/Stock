@@ -1,11 +1,7 @@
  package com.estudos.stock.domains;
 
-import com.estudos.stock.shared.enums.Role;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,9 +10,9 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter; 
+import lombok.Setter;
 
-@Entity(name= "employee")
+ @Entity(name= "employee")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,14 +27,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "credential_id")
     private Credential credential;
-    @Enumerated(EnumType.STRING)
-    @Column
-    private Role role;
 
-    public Employee(String name, String cpf, Credential credential, Role role){
+    public Employee(String name, String cpf, Credential credential){
         this.name = name;
         this.cpf = cpf;
         this.credential = credential;
-        this.role = role;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.estudos.stock.domains.Credential;
-import com.estudos.stock.domains.Employee;;
+import com.estudos.stock.domains.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
     Optional<Employee> getByCredentialId (Credential credentialId);
@@ -19,8 +19,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
                 e.name,
                 e.cpf,
                 c.email,
-                e.credential_id, 
-                e.role
+                e.credential_id
                 FROM employee e 
                 JOIN credential c ON c.id = e.credential_id
                 """,
