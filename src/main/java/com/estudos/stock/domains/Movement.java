@@ -29,13 +29,15 @@ public class Movement {
     @Enumerated(EnumType.STRING)
     @Column(name= "movement_type")
     private MovementTypeEnum movementType;
-    @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private Product productId;
     @Column
     private int amount;
     @Column(name= "movement_date")
     private Date movementDate;
+    
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product productId;
 
     public Movement(MovementTypeEnum movementType, Product productId, int amount){
         this.movementType = movementType;
