@@ -3,6 +3,8 @@ package com.estudos.stock.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estudos.stock.domains.Movement;
-import com.estudos.stock.respositories.MovementRepository;
+import com.estudos.stock.services.movement.CreateMovementService;
+import com.estudos.stock.services.movement.GetMovementsService;
 import com.estudos.stock.shared.dtos.CreateMovementDto;
 
 @RestController
@@ -18,17 +21,19 @@ import com.estudos.stock.shared.dtos.CreateMovementDto;
 public class MovementController {
     
     @Autowired
-    private MovementRepository movementRepository;
+    private CreateMovementService createMovementService;
+    @Autowired
+    private GetMovementsService getMovementsService;
 
     @PostMapping
-    public Movement register(@RequestBody CreateMovementDto body){
-        Movement movement = new Movement(body.movementType, body.productId, body.amount);
-        return this.movementRepository.save(movement);
+    public ResponseEntity<Movement> register(@RequestBody CreateMovementDto body){
+        Movement movement = createMovementService.execute(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(movement);
     }
 
     @GetMapping
     public List<Movement> getAll(){
-        return this.movementRepository.getAll();
+        return this.getMovementsService.execute();
     }
 }
 
