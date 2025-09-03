@@ -1,4 +1,4 @@
-package com.estudos.stock.services;
+package com.estudos.stock.services.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.estudos.stock.domains.Credential;
 import com.estudos.stock.domains.Employee;
 import com.estudos.stock.respositories.EmployeeRepository;
+import com.estudos.stock.services.CreateCredentialService;
 import com.estudos.stock.shared.dtos.CreateEmployeeDto;
 
 @Service
