@@ -42,6 +42,8 @@ public class Product {
     private String mark;
     @Column(precision=10, scale=2)
     private BigDecimal value;
+    @Column(name="stock_quantity")
+    private int stockQuantity;
     @Column(name="created_at")
     private Date createdAt;
     @Column(name="updated_at")
@@ -54,6 +56,7 @@ public class Product {
         this.productMeasurement = productMeasurement;
         this.mark = mark;
         this.value = value;
+        this.stockQuantity = 0;
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }

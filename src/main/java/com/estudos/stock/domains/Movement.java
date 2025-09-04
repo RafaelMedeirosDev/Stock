@@ -36,7 +36,7 @@ public class Movement {
     
 
     @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", updatable = false)
     private Product productId;
 
     public Movement(MovementTypeEnum movementType, Product productId, int amount){
