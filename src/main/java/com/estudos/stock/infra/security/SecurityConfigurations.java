@@ -29,7 +29,11 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST, "/auth/log").permitAll()
                     .requestMatchers(HttpMethod.POST, "/products").hasAnyAuthority("MANAGER")
+                    .requestMatchers(HttpMethod.GET, "/products").hasAnyAuthority("MANAGER", "EMPLOYEE")
                     .requestMatchers(HttpMethod.POST, "/employees").hasAnyAuthority("MANAGER")
+                    .requestMatchers(HttpMethod.GET, "/employees").hasAnyAuthority("MANAGER", "EMPLOYEE")
+                    .requestMatchers(HttpMethod.POST, "/movement").hasAnyAuthority("MANAGER", "EMPLOYEE")
+                    .requestMatchers(HttpMethod.GET, "/movement").hasAnyAuthority("MANAGER", "EMPLOYEE")
                     .anyRequest().authenticated()
                     )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
