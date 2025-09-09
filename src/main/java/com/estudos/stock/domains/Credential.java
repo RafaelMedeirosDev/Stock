@@ -50,8 +50,8 @@ public class Credential implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == Role.MANAGER) return List.of(new SimpleGrantedAuthority("MANAGER"), new SimpleGrantedAuthority("ROLE_ATTENDANT"));
-        else return List.of(new SimpleGrantedAuthority("ATTENDANT"+this.role.name()));
+        if(this.role == Role.MANAGER) return List.of(new SimpleGrantedAuthority("ROLE_"+this.role.name()));
+        else return List.of(new SimpleGrantedAuthority("ROLE_"+this.role.name()));
     }
 
     @Override
